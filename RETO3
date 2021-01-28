@@ -11,9 +11,7 @@ tables <- html_nodes(file, "table")
 table1 <- html_table(tables[1], fill = TRUE)
 table1 <- as.data.frame(table1)
 # Quitar los caracteres no necesarios de la columna sueldos (todo lo que no sea número), para dejar solamente la cantidad mensual (Hint: la función gsub podría ser de utilidad)
-fila <- gsub("MXN","",table1$Sueldo)
-fila <- gsub("[^[:alnum:][:blank:]?]", "", fila)
-fila <- gsub("mes","",fila)
+fila <- gsub("[^0-9]","",table1$Sueldo)
 # Asignar ésta columna como tipo numérico para poder realizar operaciones con ella
 table1$Sueldo <- as.numeric(fila)
 
